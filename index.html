@@ -117,7 +117,7 @@
     <script src="js/tween.min.js"></script>
     <script src="js/TrackballControls.js"></script>
     <script src="js/CSS3DRenderer.js"></script>
-    <audio autoplay="autopaly">
+    <audio autoplay="autopaly" id="">
         <source src="./music.mp3" type="audio/mp3" />
     </audio>
     <div id="container"></div>
@@ -265,6 +265,27 @@
             // "Uus", "Ununseptium", "(294)", 17, 7,
             // "Uuo", "Ununoctium", "(294)", 18, 7
         ];
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        if (isWeixin) {
+            autoPlayAudio1();
+        }
+
+        function autoPlayAudio1() {
+            wx.ready(function () {
+                document.getElementById('audio').play();
+            });
+            wx.config({
+                // 配置信息, 即使不正确也能使用 wx.ready
+                debug: false,
+                appId: '',
+                timestamp: 1,
+                nonceStr: '',
+                signature: '',
+                jsApiList: []
+            });
+
+        }
 
         var camera, scene, renderer;
         var controls;
