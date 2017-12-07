@@ -113,8 +113,6 @@
 </head>
 
 <body>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="js/three.min.js"></script>
     <script src="js/tween.min.js"></script>
     <script src="js/TrackballControls.js"></script>
@@ -267,28 +265,6 @@
             // "Uus", "Ununseptium", "(294)", 17, 7,
             // "Uuo", "Ununoctium", "(294)", 18, 7
         ];
-        var ua = navigator.userAgent.toLowerCase();
-        var isWeixin = ua.indexOf('micromessenger') != -1;
-        if (isWeixin) {
-            autoPlayAudio1();
-        }
-
-        function autoPlayAudio1() {
-            wx.ready(function () {
-                document.getElementById('audio').play();
-            });
-            wx.config({
-                // 配置信息, 即使不正确也能使用 wx.ready
-                debug: false,
-                appId: '',
-                timestamp: 1,
-                nonceStr: '',
-                signature: '',
-                jsApiList: []
-            });
-
-        }
-
         var camera, scene, renderer;
         var controls;
 
